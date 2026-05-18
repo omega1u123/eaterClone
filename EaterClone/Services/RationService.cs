@@ -16,7 +16,7 @@ public class RationService(RationRepository rationRepository, MealService mealSe
         };
         await rationRepository.Create(ration);
         var meals = await mealService.CreateDefaultMeals(ration.Id);
-        ration.Meals.AddRange(meals.Select(x => x.Id).ToList());
+        ration.Meals.AddRange(meals);
 
         await rationRepository.Update(ration);
 
@@ -24,7 +24,7 @@ public class RationService(RationRepository rationRepository, MealService mealSe
         {
             Id = ration.Id,
             Date = ration.Date,
-            MealIds = ration.Meals
+            MealIds = ration.Meals.Select(x => x.Id).ToList()
         };
     }
 
@@ -35,7 +35,7 @@ public class RationService(RationRepository rationRepository, MealService mealSe
         {
             Id =  ration!.Id,
             Date = ration.Date,
-            MealIds = ration.Meals
+            MealIds = ration.Meals.Select(x => x.Id).ToList()
         };
     }
     

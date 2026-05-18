@@ -6,4 +6,5 @@ public record MealDto
     public string Name { get; init; } = null!;
     public Guid RationId { get; init; }
     public List<Guid> DishIds { get; init; } = null!;
+    
 }

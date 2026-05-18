@@ -4,15 +4,17 @@ using EaterClone.Models;
 
 namespace EaterClone.Services;
 
-public class DishService(DishRepository dishRepository)
+public class DishService(DishRepository dishRepository, ProductRepository productRepository)
 {
     public async Task<DishDto> Create(CreateDishDto createDishDto)
     {
+
+        var products = await productRepository.FindAllByIds(createDishDto.ProductsId);
         var dish = new DishEntity
         {
             Name = createDishDto.Name,
             Weight = createDishDto.Weight,
-            Products = createDishDto.ProductsId,
+            Products = products,
             PictureUrl = createDishDto.PictureUrl,
             UserId = createDishDto.UserId
         };
@@ -24,7 +26,7 @@ public class DishService(DishRepository dishRepository)
             Id = dish.Id,
             Name = dish.Name,
             Weight = dish.Weight,
-            ProductsId = dish.Products,
+            ProductsId = dish.Products.Select(x => x.Id).ToList(),
             PictureUrl = dish.PictureUrl,
             UserId = dish.UserId
         };
@@ -40,7 +42,7 @@ public class DishService(DishRepository dishRepository)
                 Id = x.Id,
                 Name = x.Name,
                 Weight = x.Weight,
-                ProductsId = x.Products,
+                ProductsId = x.Products.Select(p => p.Id).ToList(),
                 PictureUrl = x.PictureUrl,
                 UserId = x.UserId
             }).ToList();

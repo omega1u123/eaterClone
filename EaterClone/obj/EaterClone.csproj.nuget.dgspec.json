@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\projects\\eater-clone-dotnet\\EaterClone\\EaterClone\\EaterClone.csproj": {}
+    "d:\\projects\\eater-clone-dotnet\\EaterClone\\EaterClone\\EaterClone.csproj": {}
   },
   "projects": {
-    "D:\\projects\\eater-clone-dotnet\\EaterClone\\EaterClone\\EaterClone.csproj": {
+    "d:\\projects\\eater-clone-dotnet\\EaterClone\\EaterClone\\EaterClone.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\eater-clone-dotnet\\EaterClone\\EaterClone\\EaterClone.csproj",
+        "projectUniqueName": "d:\\projects\\eater-clone-dotnet\\EaterClone\\EaterClone\\EaterClone.csproj",
         "projectName": "EaterClone",
-        "projectPath": "D:\\projects\\eater-clone-dotnet\\EaterClone\\EaterClone\\EaterClone.csproj",
+        "projectPath": "d:\\projects\\eater-clone-dotnet\\EaterClone\\EaterClone\\EaterClone.csproj",
         "packagesPath": "C:\\Users\\gvard\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\eater-clone-dotnet\\EaterClone\\EaterClone\\obj\\",
+        "outputPath": "d:\\projects\\eater-clone-dotnet\\EaterClone\\EaterClone\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\gvard\\AppData\\Roaming\\NuGet\\NuGet.Config"

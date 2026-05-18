@@ -4,15 +4,17 @@ using EaterClone.Models;
 
 namespace EaterClone.Services;
 
-public class MealService(MealRepository mealRepository)
+public class MealService(MealRepository mealRepository, DishRepository dishRepository)
 {
     public async Task<MealDto> CreateMeal(CreateMealDto createMealDto)
     {
+        var dishes = await dishRepository.FindAllByIds(createMealDto.DishIds);
+        
         var meal = new MealEntity
         {
             Name = createMealDto.Name,
             RationId = createMealDto.RationId,
-            DishIds = createMealDto.DishIds
+            Dishes = dishes
         };
         
         await mealRepository.Create(meal);
@@ -22,11 +24,11 @@ public class MealService(MealRepository mealRepository)
             Id = meal.Id,
             Name = meal.Name,
             RationId = meal.RationId,
-            DishIds = meal.DishIds
+            DishIds = dishes.Select(x => x.Id).ToList()
         };
     }
 
-    public async Task<List<MealDto>> CreateDefaultMeals(Guid rationId)
+    public async Task<List<MealEntity>> CreateDefaultMeals(Guid rationId)
     {
         var meals = new List<MealEntity>
         {
@@ -34,33 +36,25 @@ public class MealService(MealRepository mealRepository)
             {
                 Name = "Завтрак",
                 RationId = rationId,
-                DishIds = []
+                Dishes = []
             },
             new MealEntity
             {
                 Name = "Обед",
                 RationId = rationId,
-                DishIds = []
+                Dishes = []
             },
             new MealEntity
             {
                 Name = "Ужин",
                 RationId = rationId,
-                DishIds = []
+                Dishes = []
             }
         };
         
         await mealRepository.CreateMany(meals);
 
-        return meals.Select(x =>
-            new MealDto
-            {
-                Id = x.Id,
-                Name = x.Name,
-                RationId = x.RationId,
-                DishIds = x.DishIds
-            }
-        ).ToList();
+        return meals;
         
     }
 
@@ -72,14 +66,15 @@ public class MealService(MealRepository mealRepository)
             Id = meal!.Id,
             Name = meal.Name,
             RationId = meal.RationId,
-            DishIds = meal.DishIds
+            DishIds = meal.Dishes.Select(y => y.Id).ToList()
         };
     }
 
     public async Task<MealDto> AddMealToDish(UpdateMealDto updateMealDto)
     {
         var meal = await mealRepository.FindById(updateMealDto.MealId);
-        meal!.DishIds.Add(updateMealDto.DishId);
+        var dish = await dishRepository.FindById(updateMealDto.DishId);
+        meal!.Dishes.Add(dish!);
         await mealRepository.Update(meal);
 
         return new MealDto
@@ -87,14 +82,15 @@ public class MealService(MealRepository mealRepository)
             Id = meal.Id,
             Name = meal.Name,
             RationId = meal.RationId,
-            DishIds = meal.DishIds
+            DishIds = meal.Dishes.Select(y => y.Id).ToList()
         };
     }
 
     public async Task<MealDto> RemoveDishFromMeal(UpdateMealDto updateMealDto)
     {
         var meal = await mealRepository.FindById(updateMealDto.MealId);
-        meal!.DishIds.Remove(updateMealDto.DishId);
+        var dish = await dishRepository.FindById(updateMealDto.DishId);
+        meal!.Dishes.Remove(dish!);
         await mealRepository.Update(meal);
 
         return new MealDto
@@ -102,7 +98,7 @@ public class MealService(MealRepository mealRepository)
             Id = meal.Id,
             Name = meal.Name,
             RationId = meal.RationId,
-            DishIds = meal.DishIds
+            DishIds = meal.Dishes.Select(y => y.Id).ToList()
         };
     }
 }

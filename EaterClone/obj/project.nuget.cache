@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qo42ZkE/g2E=",
+  "dgSpecHash": "im43XIlCvIQ=",
   "success": true,
-  "projectFilePath": "D:\\projects\\eater-clone-dotnet\\EaterClone\\EaterClone\\EaterClone.csproj",
+  "projectFilePath": "d:\\projects\\eater-clone-dotnet\\EaterClone\\EaterClone\\EaterClone.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gvard\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.6\\microsoft.aspnetcore.openapi.10.0.6.nupkg.sha512",
     "C:\\Users\\gvard\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.7\\microsoft.entityframeworkcore.10.0.7.nupkg.sha512",

@@ -10,6 +10,7 @@ public class DishEntityConfig : IEntityTypeConfiguration<DishEntity>
     {
         builder.ToTable(nameof(DishEntity));
         builder.HasKey(x => x.Id);
+        
         builder.HasMany(x => x.Products).WithMany();
     }
 }

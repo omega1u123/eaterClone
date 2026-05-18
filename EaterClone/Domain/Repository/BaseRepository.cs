@@ -28,6 +28,12 @@ public abstract class BaseRepository<T>(AppDbContext dbContext)
         return entity;
     }
 
+    public async Task<List<T>> FindAllByIds(List<Guid> ids)
+    {
+        var entities = await DbContext.Set<T>().Where(x => ids.Contains(x.Id)).ToListAsync();
+        return entities;
+    }
+
     public async Task DeleteById(Guid id)
     {
         await DbContext.Set<T>().Where(x => x.Id == id).ExecuteDeleteAsync();
