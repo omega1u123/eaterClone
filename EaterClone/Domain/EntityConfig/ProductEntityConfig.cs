@@ -10,5 +10,6 @@ public class ProductEntityConfig : IEntityTypeConfiguration<ProductEntity>
     {
         builder.ToTable(nameof(ProductEntity));
         builder.HasKey(x => x.Id);
+        
     }
 }

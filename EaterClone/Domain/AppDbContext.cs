@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EaterClone.Domain;
 
-public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
+public class AppDbContext : DbContext
 {
     public DbSet<ProductEntity> ProductEntities { get; set; }
     public DbSet<DishEntity> DishEntities { get; set; }
@@ -13,7 +13,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-        const string connectionString = "Host=localhost;Port=5432;Database=eater-clone;Username=postgres;Password=postgres";
+        const string connectionString = "Host=localhost;Port=5432;Database=eater-clone-db;Username=postgres;Password=postgres";
 
         options.UseNpgsql(connectionString);
     }

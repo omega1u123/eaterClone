@@ -11,6 +11,6 @@ public class DishEntityConfig : IEntityTypeConfiguration<DishEntity>
         builder.ToTable(nameof(DishEntity));
         builder.HasKey(x => x.Id);
         
-        builder.HasMany(x => x.Products).WithMany();
+        builder.HasMany(x => x.Products).WithMany(x => x.Dishes);
     }
 }
