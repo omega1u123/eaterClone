@@ -32,6 +32,7 @@ public static class DependencyInjection
 
     public static IServiceCollection AddAuthenticationAndAuthorization(this IServiceCollection services)
     {
+        services.AddScoped<JwtTokenService>();
         services.AddAuthorization();
         services.AddAuthentication()
             .AddJwtBearer(options =>

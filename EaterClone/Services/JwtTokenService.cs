@@ -7,8 +7,14 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace EaterClone.Services;
 
-public class JwtTokenService(AppDbContext dbContext)
+public class JwtTokenService(AppDbContext dbContext, JwtSecurityTokenHandler tokenHandler)
 {
+    public async Task<Guid> GetUserIdFromToken(string token)
+    {
+        var principal = await tokenHandler.ValidateTokenAsync(token,null);
+        return Guid.Parse(principal.ClaimsIdentity.Claims.First().Value);  
+    }
+    
     public async Task<UserTokensDto> GenerateTokens(Guid userId)
     { 
         var user = await dbContext.UserEntities.FirstOrDefaultAsync(x => x.Id == userId);
@@ -34,7 +40,7 @@ public class JwtTokenService(AppDbContext dbContext)
                 SecurityAlgorithms.HmacSha256)
         );
 
-        return new JwtSecurityTokenHandler().WriteToken(accessJwt);
+        return tokenHandler.WriteToken(accessJwt);
     }
 
     private string GenerateRefreshToken()
@@ -46,7 +52,7 @@ public class JwtTokenService(AppDbContext dbContext)
                 SecurityAlgorithms.HmacSha256)
         );
         
-        return new JwtSecurityTokenHandler().WriteToken(refreshJwt);
+        return tokenHandler.WriteToken(refreshJwt);
     }
-
+    
 }
