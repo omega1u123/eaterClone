@@ -13,5 +13,17 @@ public class UserController(UserService userService, JwtTokenService jwtTokenSer
     {
         return await userService.FindById(userId);
     }
+
+    [HttpPost("signUp")]
+    public async Task<ActionResult<UserDto>> SignUp(SignUpRequest signUpRequest)
+    {
+        return  await userService.SingUp(signUpRequest);
+    }
+
+    [HttpPost("signIn")]
+    public async Task<ActionResult<UserDto>> SignIn(SignInRequest signInRequest)
+    {
+        return await userService.SignIn(signInRequest);
+    }
     
 }
