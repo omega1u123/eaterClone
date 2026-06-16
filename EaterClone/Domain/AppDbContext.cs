@@ -10,6 +10,7 @@ public class AppDbContext : DbContext
     public DbSet<MealEntity> MealEntities { get; set; }
     public DbSet<RationEntity> RationEntities { get; set; }
     public DbSet<UserEntity> UserEntities { get; set; }
+    public DbSet<JwtTokensEntity> JwtTokensEntities { get; set; }
     
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {

@@ -15,13 +15,13 @@ public class UserController(UserService userService, JwtTokenService jwtTokenSer
     }
 
     [HttpPost("signUp")]
-    public async Task<ActionResult<UserDto>> SignUp(SignUpRequest signUpRequest)
+    public async Task<ActionResult<SignUpResponse>> SignUp(SignUpRequest signUpRequest)
     {
         return  await userService.SingUp(signUpRequest);
     }
 
     [HttpPost("signIn")]
-    public async Task<ActionResult<UserDto>> SignIn(SignInRequest signInRequest)
+    public async Task<ActionResult<SignInResponse>> SignIn(SignInRequest signInRequest)
     {
         return await userService.SignIn(signInRequest);
     }

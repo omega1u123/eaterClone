@@ -1,3 +1,4 @@
+using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using EaterClone.Domain;
 using EaterClone.Domain.Repository;
@@ -25,14 +26,17 @@ public static class DependencyInjection
         services.AddScoped<DishService>();
         services.AddScoped<MealService>();
         services.AddScoped<RationService>();
+        services.AddScoped<JwtTokenService>();
+        services.AddScoped<JwtSecurityTokenHandler>();
         services.AddScoped<UserService>();
+       
     
         return services;
     }
 
     public static IServiceCollection AddAuthenticationAndAuthorization(this IServiceCollection services)
     {
-        services.AddScoped<JwtTokenService>();
+        
         services.AddAuthorization();
         services.AddAuthentication()
             .AddJwtBearer(options =>

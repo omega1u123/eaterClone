@@ -1,10 +1,11 @@
+using EaterClone.Domain;
 using EaterClone.Domain.Entities;
 using EaterClone.Domain.Repository;
 using EaterClone.Models;
 
 namespace EaterClone.Services;
 
-public class UserService(UserRepository userRepository)
+public class UserService(AppDbContext appDbContext, UserRepository userRepository, JwtTokenService jwtTokenService)
 {
     public async Task<UserDto> FindById(Guid userId)
     {
@@ -20,7 +21,7 @@ public class UserService(UserRepository userRepository)
         };
     }
 
-    public async Task<UserDto> SingUp(SignUpRequest signUpRequest)
+    public async Task<SignUpResponse> SingUp(SignUpRequest signUpRequest)
     {
         var user = new UserEntity
         {
@@ -29,24 +30,51 @@ public class UserService(UserRepository userRepository)
         };
         
         await userRepository.Create(user);
+        
+        var tokens = await jwtTokenService.GenerateTokens(user.Id);
 
-        return new UserDto
+        var jwtTokens = new JwtTokensEntity
         {
-            Id = user.Id,
-            Name = user.Name
+            AccessToken = tokens.AccessToken,
+            RefreshToken = tokens.RefreshToken
+        };
+        
+        await appDbContext.JwtTokensEntities.AddAsync(jwtTokens);
+        await appDbContext.SaveChangesAsync();
+        
+        return new SignUpResponse
+        {
+            UserId = user.Id,
+            Name = user.Name,
+            AccessToken = tokens.AccessToken,
+            RefreshToken = tokens.RefreshToken
         };
     }
 
-    public async Task<UserDto> SignIn(SignInRequest signInRequest)
+    public async Task<SignInResponse> SignIn(SignInRequest signInRequest)
     {
         var user = await userRepository.FindByNameAndPassword(signInRequest.Name, signInRequest.Password);
         if (user is null)
             throw new NotImplementedException("SignIn exception");
-
-        return new UserDto
+        
+        var tokens = await jwtTokenService.GenerateTokens(user.Id);
+        
+        var jwtTokens = new JwtTokensEntity
         {
-            Id = user.Id,
-            Name = user.Name
+            AccessToken = tokens.AccessToken,
+            RefreshToken = tokens.RefreshToken
+        };
+        
+        await appDbContext.JwtTokensEntities.AddAsync(jwtTokens);
+        await appDbContext.SaveChangesAsync();
+
+        
+        return new SignInResponse
+        {
+            UserId = user.Id,
+            Name = user.Name,
+            AccessToken = tokens.AccessToken,
+            RefreshToken = tokens.RefreshToken
         };
     }
     
