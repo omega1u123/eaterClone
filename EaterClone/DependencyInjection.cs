@@ -1,5 +1,4 @@
 using System.IdentityModel.Tokens.Jwt;
-using System.Text;
 using EaterClone.Domain;
 using EaterClone.Domain.Repository;
 using EaterClone.Services;
@@ -46,11 +45,17 @@ public static class DependencyInjection
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             })
             .AddJwtBearer(options =>
+            {
+                //options.RequireHttpsMetadata = true;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateLifetime = true,
-                    IssuerSigningKey = new SymmetricSecurityKey("your-very-secret-key-16-bytes-qwewqe-qwewqe-wqewe"u8.ToArray())
-                });
+                    ValidateIssuer = false,        // ← Добавьте
+                    ValidateAudience = false,
+                    IssuerSigningKey =
+                        new SymmetricSecurityKey("your-very-secret-key-16-bytes-qwewqe-qwewqe-wqewe"u8.ToArray())
+                };
+            });
         
         return services;
     }

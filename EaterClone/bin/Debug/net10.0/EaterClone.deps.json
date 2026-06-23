@@ -13,7 +13,7 @@
           "Microsoft.EntityFrameworkCore": "10.0.8",
           "Microsoft.EntityFrameworkCore.Design": "10.0.8",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "10.0.1",
-          "Swashbuckle.AspNetCore.SwaggerUI": "10.2.3"
+          "Scalar.AspNetCore": "2.16.5"
         },
         "runtime": {
           "EaterClone.dll": {}
@@ -506,11 +506,11 @@
           }
         }
       },
-      "Swashbuckle.AspNetCore.SwaggerUI/10.2.3": {
+      "Scalar.AspNetCore/2.16.5": {
         "runtime": {
-          "lib/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
-            "assemblyVersion": "10.2.3.0",
-            "fileVersion": "10.2.3.2721"
+          "lib/net10.0/Scalar.AspNetCore.dll": {
+            "assemblyVersion": "2.16.5.0",
+            "fileVersion": "2.16.5.0"
           }
         }
       },
@@ -784,12 +784,12 @@
       "path": "npgsql.entityframeworkcore.postgresql/10.0.1",
       "hashPath": "npgsql.entityframeworkcore.postgresql.10.0.1.nupkg.sha512"
     },
-    "Swashbuckle.AspNetCore.SwaggerUI/10.2.3": {
+    "Scalar.AspNetCore/2.16.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-nthWONRs/FJ4yyG206g1cC52WEG8EqrjuMWjGdR+5XG7lbjFto6NqcI9EMICgVFom/UivIjUVwI76ZHbHwTPfQ==",
-      "path": "swashbuckle.aspnetcore.swaggerui/10.2.3",
-      "hashPath": "swashbuckle.aspnetcore.swaggerui.10.2.3.nupkg.sha512"
+      "sha512": "sha512-194DwaZqe9Cd4nJPdY0c7/3ldLhxtgiMMAlWsgGdKuDLvGgKh7Poozd12nowxFS3ytKYzMcyMPjCIWww5n0hDA==",
+      "path": "scalar.aspnetcore/2.16.5",
+      "hashPath": "scalar.aspnetcore.2.16.5.nupkg.sha512"
     },
     "System.CodeDom/6.0.0": {
       "type": "package",

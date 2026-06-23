@@ -33,7 +33,6 @@ public class JwtTokenService(AppDbContext dbContext, JwtSecurityTokenHandler tok
     {
         var claims = new List<Claim> { new Claim(ClaimsIdentity.DefaultNameClaimType, userId.ToString()) };
         var accessJwt = new JwtSecurityToken(
-            issuer: null,
             claims: claims,
             expires: DateTime.UtcNow.Add(TimeSpan.FromMinutes(30)),
             signingCredentials: new SigningCredentials(new SymmetricSecurityKey("your-very-secret-key-16-bytes-qwewqe-qwewqe-wqewe"u8.ToArray()),
@@ -46,7 +45,6 @@ public class JwtTokenService(AppDbContext dbContext, JwtSecurityTokenHandler tok
     private string GenerateRefreshToken()
     {
         var refreshJwt = new JwtSecurityToken(
-            issuer: null,
             expires: DateTime.UtcNow.Add(TimeSpan.FromDays(2)),
             signingCredentials: new SigningCredentials(new SymmetricSecurityKey("your-very-secret-key-16-bytes-qwewqe-qwewqe-wqewe"u8.ToArray()),
                 SecurityAlgorithms.HmacSha256)

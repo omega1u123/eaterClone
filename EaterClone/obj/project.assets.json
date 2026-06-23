@@ -656,16 +656,16 @@
           }
         }
       },
-      "Swashbuckle.AspNetCore.SwaggerUI/10.2.3": {
+      "Scalar.AspNetCore/2.16.5": {
         "type": "package",
         "compile": {
-          "lib/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
-            "related": ".pdb;.xml"
+          "lib/net10.0/Scalar.AspNetCore.dll": {
+            "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
-            "related": ".pdb;.xml"
+          "lib/net10.0/Scalar.AspNetCore.dll": {
+            "related": ".xml"
           }
         },
         "frameworkReferences": [
@@ -2311,25 +2311,23 @@
         "postgresql.png"
       ]
     },
-    "Swashbuckle.AspNetCore.SwaggerUI/10.2.3": {
-      "sha512": "nthWONRs/FJ4yyG206g1cC52WEG8EqrjuMWjGdR+5XG7lbjFto6NqcI9EMICgVFom/UivIjUVwI76ZHbHwTPfQ==",
+    "Scalar.AspNetCore/2.16.5": {
+      "sha512": "194DwaZqe9Cd4nJPdY0c7/3ldLhxtgiMMAlWsgGdKuDLvGgKh7Poozd12nowxFS3ytKYzMcyMPjCIWww5n0hDA==",
       "type": "package",
-      "path": "swashbuckle.aspnetcore.swaggerui/10.2.3",
+      "path": "scalar.aspnetcore/2.16.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll",
-        "lib/net10.0/Swashbuckle.AspNetCore.SwaggerUI.pdb",
-        "lib/net10.0/Swashbuckle.AspNetCore.SwaggerUI.xml",
-        "lib/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll",
-        "lib/net8.0/Swashbuckle.AspNetCore.SwaggerUI.pdb",
-        "lib/net8.0/Swashbuckle.AspNetCore.SwaggerUI.xml",
-        "lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll",
-        "lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.pdb",
-        "lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.xml",
-        "package-readme.md",
-        "swashbuckle.aspnetcore.swaggerui.10.2.3.nupkg.sha512",
-        "swashbuckle.aspnetcore.swaggerui.nuspec"
+        "README.md",
+        "icon.png",
+        "lib/net10.0/Scalar.AspNetCore.dll",
+        "lib/net10.0/Scalar.AspNetCore.xml",
+        "lib/net8.0/Scalar.AspNetCore.dll",
+        "lib/net8.0/Scalar.AspNetCore.xml",
+        "lib/net9.0/Scalar.AspNetCore.dll",
+        "lib/net9.0/Scalar.AspNetCore.xml",
+        "scalar.aspnetcore.2.16.5.nupkg.sha512",
+        "scalar.aspnetcore.nuspec"
       ]
     },
     "System.CodeDom/6.0.0": {
@@ -2549,7 +2547,7 @@
       "Microsoft.EntityFrameworkCore >= 10.0.8",
       "Microsoft.EntityFrameworkCore.Design >= 10.0.8",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 10.0.1",
-      "Swashbuckle.AspNetCore.SwaggerUI >= 10.2.3"
+      "Scalar.AspNetCore >= 2.16.5"
     ]
   },
   "packageFolders": {
@@ -2617,9 +2615,9 @@
             "target": "Package",
             "version": "[10.0.1, )"
           },
-          "Swashbuckle.AspNetCore.SwaggerUI": {
+          "Scalar.AspNetCore": {
             "target": "Package",
-            "version": "[10.2.3, )"
+            "version": "[2.16.5, )"
           }
         },
         "imports": [

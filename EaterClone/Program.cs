@@ -1,6 +1,7 @@
 using EaterClone;
 using EaterClone.Domain;
 using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,13 +23,9 @@ var app = builder.Build();
 
 app.MapOpenApi();
 
-app.UseSwaggerUI(options =>
-{
-    options.SwaggerEndpoint("/openapi/v1.json", "v1");
-    
-});
+app.MapScalarApiReference();
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
