@@ -1,14 +1,15 @@
+using EaterClone.Domain;
 using EaterClone.Domain.Entities;
 using EaterClone.Domain.Repository;
 using EaterClone.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EaterClone.Services;
 
-public class DishService(DishRepository dishRepository, ProductRepository productRepository)
+public class DishService(AppDbContext dbContext, DishRepository dishRepository, ProductRepository productRepository)
 {
     public async Task<DishDto> Create(CreateDishDto createDishDto)
     {
-
         var products = await productRepository.FindAllByIds(createDishDto.ProductsId);
         var dish = new DishEntity
         {
@@ -47,5 +48,18 @@ public class DishService(DishRepository dishRepository, ProductRepository produc
                 UserId = x.UserId
             }).ToList();
     }
-    
+
+    public async Task<DishDto> FindById(Guid id)
+    {
+        var dish = await dbContext.DishEntities.FirstAsync(x => x.Id == id);
+        return new DishDto
+        {
+            Id = dish.Id,
+            Name = dish.Name,
+            Weight = dish.Weight,
+            ProductsId = dish.Products.Select(x => x.Id).ToList(),
+            PictureUrl = dish.PictureUrl,
+            UserId = dish.UserId
+        };
+    }
 }

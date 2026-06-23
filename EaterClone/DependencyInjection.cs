@@ -2,6 +2,7 @@ using System.IdentityModel.Tokens.Jwt;
 using EaterClone.Domain;
 using EaterClone.Domain.Repository;
 using EaterClone.Services;
+using EaterClone.Utils;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -29,7 +30,8 @@ public static class DependencyInjection
         services.AddScoped<JwtTokenService>();
         services.AddScoped<JwtSecurityTokenHandler>();
         services.AddScoped<UserService>();
-       
+        services.AddScoped<CsvProductParser>();
+        
     
         return services;
     }

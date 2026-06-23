@@ -31,7 +31,7 @@ public class UserController(UserService userService, JwtTokenService jwtTokenSer
     [Authorize]
     public async Task<ActionResult<string>> AuthTest()
     {
-        return "working";
+        return User.Claims.First().Value;
     }
 
 }
