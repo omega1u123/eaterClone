@@ -7,7 +7,7 @@ namespace EaterClone.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize] 
+
 public class DishController(DishService dishService) : ControllerBase
 {
     [HttpGet("{dishId}")]

@@ -51,7 +51,7 @@ public class DishService(AppDbContext dbContext, DishRepository dishRepository, 
 
     public async Task<DishDto> FindById(Guid id)
     {
-        var dish = await dbContext.DishEntities.FirstAsync(x => x.Id == id);
+        var dish = await dbContext.DishEntities.Include(x => x.Products).FirstAsync(x => x.Id == id);
         return new DishDto
         {
             Id = dish.Id,
