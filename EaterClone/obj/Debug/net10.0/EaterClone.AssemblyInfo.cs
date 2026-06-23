@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EaterClone")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c8de5f4e6fc0edb258eb81d1264da7f1e8588e7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72debb36fe82638c5ed4863836ae6479190890ae")]
 [assembly: System.Reflection.AssemblyProductAttribute("EaterClone")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EaterClone")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

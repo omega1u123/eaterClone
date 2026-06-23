@@ -3,6 +3,7 @@ using System.Text;
 using EaterClone.Domain;
 using EaterClone.Domain.Repository;
 using EaterClone.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
 namespace EaterClone;
@@ -38,12 +39,17 @@ public static class DependencyInjection
     {
         
         services.AddAuthorization();
-        services.AddAuthentication()
+        services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
             .AddJwtBearer(options =>
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateLifetime = true,
-                    IssuerSigningKey = new SymmetricSecurityKey("secret-key"u8.ToArray())
+                    IssuerSigningKey = new SymmetricSecurityKey("your-very-secret-key-16-bytes-qwewqe-qwewqe-wqewe"u8.ToArray())
                 });
         
         return services;

@@ -1,5 +1,6 @@
 using EaterClone.Models;
 using EaterClone.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EaterClone.Controllers;
@@ -25,5 +26,12 @@ public class UserController(UserService userService, JwtTokenService jwtTokenSer
     {
         return await userService.SignIn(signInRequest);
     }
-    
+
+    [HttpGet("authTest")]
+    [Authorize]
+    public async Task<ActionResult<string>> AuthTest()
+    {
+        return "working";
+    }
+
 }
